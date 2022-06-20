@@ -26,7 +26,7 @@
             android:fontFamily="@font/roboto_thin"/>
 
     <TextView
-            android:text="@string/por_um_mundo_sem_banccos"
+            android:text="@string/por_um_mundo_sem_bancos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/worldWithoutBanks"
@@ -62,7 +62,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintTop_toBottomOf="@+id/typeYourName"
-            app:layout_constraintVertical_bias="0.048"/>
+            app:layout_constraintVertical_bias="0.048"
+            android:minHeight="48dp"/>
 
     <Button
             android:text="@string/continuar"
