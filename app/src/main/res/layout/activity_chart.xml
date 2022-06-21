@@ -8,19 +8,29 @@
         tools:context=".Chart"
         android:background="@drawable/background">
 
+
     <TextView
             android:text="@string/ola"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/ola"
-            android:textSize="40sp"
+            android:textSize="36sp"
             android:textColor="#FFFFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="10dp"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="389dp"
+            android:layout_height="314dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.227"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.134"/>
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintVertical_bias="0.34"/>
 
     <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -138,12 +148,25 @@
             android:text="@string/dia_selecionado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/selectedDay"
+            android:id="@+id/selectedDayText"
             android:textSize="20sp"
             android:textColor="#FFFFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.304"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="144dp"/>
+
+
+    <TextView
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/selectedDay"
+            android:textSize="20sp"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintStart_toEndOf="@+id/selectedDayText"
+            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="144dp"/>
 
@@ -189,7 +212,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
             android:layout_width="220dp"
-            android:layout_height="38dp"
+            android:layout_height="48dp"
             android:id="@+id/inputProductPrice"
             android:textColor="#FFFFFFFF"
             android:textColorHint="#FFFFFFFF"
@@ -198,5 +221,40 @@
             android:layout_marginBottom="28dp"
             app:layout_constraintStart_toEndOf="@+id/price"
             android:layout_marginStart="16dp"/>
+
+    <Button
+            android:text="@string/total"
+            android:layout_width="97dp"
+            android:layout_height="52dp"
+            android:id="@+id/buttonTotal"
+            android:backgroundTint="#636363"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="116dp"/>
+
+    <Button
+            android:text="@string/logout"
+            android:layout_width="97dp"
+            android:layout_height="52dp"
+            android:id="@+id/buttonLogout"
+            android:backgroundTint="#636363"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="12dp"/>
+
+    <TextView
+            android:text="Pedro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/helloName"
+            android:textSize="36sp"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginStart="72dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
