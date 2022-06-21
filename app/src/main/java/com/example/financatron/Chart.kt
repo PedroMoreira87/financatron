@@ -3,6 +3,7 @@ package com.example.financatron
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
@@ -32,14 +33,22 @@ class Chart : AppCompatActivity() {
         getDay(R.id.btnSaturday, 6, 7f)
 
 
-        val button = findViewById<Button>(R.id.btnTotal)
-        button.setOnClickListener {
+        val totalButton = findViewById<Button>(R.id.btnTotal)
+        totalButton.setOnClickListener {
             val intent = Intent(this, Total::class.java)
             startActivity(intent)
         }
 
-    }
+        val logoutButton = findViewById<Button>(R.id.btnLogout)
+        logoutButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
+        fun onItemClicked(view: View, position: Int) {
+            val user = DataModel.instance.users[position]
+        }
+    }
 
     private fun chart() {
         val barChart = findViewById<BarChart>(R.id.barChart)
@@ -60,14 +69,6 @@ class Chart : AppCompatActivity() {
         barDataSet.setColors(ColorTemplate.JOYFUL_COLORS, 250)
         barDataSet.valueTextColor = Color.WHITE
         barDataSet.valueTextSize = 15f
-    }
-
-    private fun getPrice(): Float? {
-        return findViewById<TextInputEditText>(R.id.productPriceInput).text.toString().toFloatOrNull()
-    }
-
-    private fun getProduct(): String {
-        return findViewById<TextInputEditText>(R.id.productInput).text.toString()
     }
 
     private fun getDay(day: Int, index: Int, x: Float) {

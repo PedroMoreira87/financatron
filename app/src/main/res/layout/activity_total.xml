@@ -8,9 +8,32 @@
         tools:context=".Total"
         android:background="@drawable/background">
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="318dp"
+            android:layout_height="272dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="40dp"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="321dp"
+            android:layout_height="346dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="108dp"/>
 
-
-
+    <Button
+            android:text="@string/voltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnBack"
+            android:backgroundTint="#636363"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

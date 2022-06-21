@@ -5,7 +5,6 @@
     <string name="digite_seu_nome">Digite seu nome:</string>
     <string name="continuar">Continuar</string>
     <string name="e_g_ruarez">e.g. Ruarez</string>
-    <string name="ola">Olá</string>
     <string name="domingo">Domingo</string>
     <string name="dom">Dom</string>
     <string name="seg">Seg</string>
@@ -20,4 +19,6 @@
     <string name="por_um_mundo_sem_bancos">Por um mundo sem bancos</string>
     <string name="total">Total</string>
     <string name="logout">Logout</string>
+    <string name="voltar">Voltar</string>
+    <string name="ola">Olá,</string>
 </resources>

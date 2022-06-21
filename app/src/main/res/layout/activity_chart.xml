@@ -9,18 +9,6 @@
         android:background="@drawable/background">
 
 
-    <TextView
-            android:text="@string/ola"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ola"
-            android:textSize="36sp"
-            android:textColor="#FFFFFFFF"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="36dp"
-            android:layout_marginStart="10dp"/>
-
     <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
             android:layout_width="391dp"
@@ -249,12 +237,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/helloName"
-            android:textSize="36sp"
+            android:textSize="24sp"
             android:textColor="#FFFFFFFF"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="46dp"
+            app:layout_constraintStart_toEndOf="@+id/ola"
+            android:layout_marginStart="4dp"/>
+
+    <TextView
+            android:text="@string/ola"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ola"
+            android:textSize="24sp"
+            android:textColor="#FFFFFFFF"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="36dp"
-            android:layout_marginStart="72dp"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="46dp"
+            android:layout_marginStart="12dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
