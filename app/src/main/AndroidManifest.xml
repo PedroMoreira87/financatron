@@ -10,6 +10,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Financatron">
         <activity
+                android:name=".Total"
+                android:exported="true"/>
+        <activity
                 android:name=".Chart"
                 android:exported="true"/>
         <activity

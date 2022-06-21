@@ -1,10 +1,12 @@
 package com.example.financatron
 
+import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -29,7 +31,15 @@ class Chart : AppCompatActivity() {
         getDay(R.id.btnFriday, 5, 6f)
         getDay(R.id.btnSaturday, 6, 7f)
 
+
+        val button = findViewById<Button>(R.id.btnTotal)
+        button.setOnClickListener {
+            val intent = Intent(this, Total::class.java)
+            startActivity(intent)
+        }
+
     }
+
 
     private fun chart() {
         val barChart = findViewById<BarChart>(R.id.barChart)
@@ -53,17 +63,18 @@ class Chart : AppCompatActivity() {
     }
 
     private fun getPrice(): Float? {
-        return findViewById<TextInputEditText>(R.id.inputProductPrice).text.toString().toFloatOrNull()
+        return findViewById<TextInputEditText>(R.id.productPriceInput).text.toString().toFloatOrNull()
     }
 
     private fun getProduct(): String {
-        return findViewById<TextInputEditText>(R.id.inputProduct).text.toString()
+        return findViewById<TextInputEditText>(R.id.productInput).text.toString()
     }
 
     private fun getDay(day: Int, index: Int, x: Float) {
         val btn = findViewById<Button>(day)
+        val inputPrice = findViewById<TextInputEditText>(R.id.productPriceInput)
 
-        val dayName = when(day) {
+        val dayName = when (day) {
             R.id.btnSunday -> "Domingo"
             R.id.btnMonday -> "Segunda"
             R.id.btnTuesday -> "Terça"
@@ -74,8 +85,16 @@ class Chart : AppCompatActivity() {
             else -> ""
         }
 
-        btn.setOnClickListener {
-            barList[index] = BarEntry(x, getPrice() ?: 0f)
+        btn.setOnClickListener() {
+            inputPrice.setOnEditorActionListener() { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    val text = v.text.toString().toFloatOrNull()
+                    barList[index] = BarEntry(x, text ?: 0f)
+                    true
+                } else {
+                    false
+                }
+            }
             findViewById<TextView>(R.id.selectedDay).apply {
                 text = dayName
             }

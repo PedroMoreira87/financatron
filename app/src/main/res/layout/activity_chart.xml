@@ -23,14 +23,14 @@
 
     <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
-            android:layout_width="389dp"
-            android:layout_height="314dp"
+            android:layout_width="391dp"
+            android:layout_height="352dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
-            app:layout_constraintVertical_bias="0.34"/>
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.849"
+            app:layout_constraintBottom_toTopOf="@+id/btnWednesday"/>
 
     <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
@@ -186,7 +186,7 @@
     <com.google.android.material.textfield.TextInputEditText
             android:layout_width="199dp"
             android:layout_height="48dp"
-            android:id="@+id/inputProduct"
+            android:id="@+id/productInput"
             android:textColor="#FFFFFFFF"
             android:textColorHint="#FFFFFFFF"
             app:boxStrokeColor="#FFFFFFFF"
@@ -208,12 +208,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="32dp"/>
 
-
-
     <com.google.android.material.textfield.TextInputEditText
             android:layout_width="220dp"
             android:layout_height="48dp"
-            android:id="@+id/inputProductPrice"
+            android:id="@+id/productPriceInput"
+            android:inputType="number"
+            android:imeOptions="actionDone"
             android:textColor="#FFFFFFFF"
             android:textColorHint="#FFFFFFFF"
             app:boxStrokeColor="#FFFFFFFF"
@@ -226,7 +226,7 @@
             android:text="@string/total"
             android:layout_width="97dp"
             android:layout_height="52dp"
-            android:id="@+id/buttonTotal"
+            android:id="@+id/btnTotal"
             android:backgroundTint="#636363"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +237,7 @@
             android:text="@string/logout"
             android:layout_width="97dp"
             android:layout_height="52dp"
-            android:id="@+id/buttonLogout"
+            android:id="@+id/btnLogout"
             android:backgroundTint="#636363"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
