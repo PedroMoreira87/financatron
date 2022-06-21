@@ -15,28 +15,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        DataModel.instance.setContext(this)
         userNameInput = findViewById(R.id.userName)
 
         val button = findViewById<Button>(R.id.btnContinue)
         button.setOnClickListener {
+            val name = userNameInput.text.toString()
+            val userName = DataModel.instance.getUserByName(name)
+
+            if(userName == null) {
+                DataModel.instance.addUser(
+                    User(name = name)
+                )
+            }
+
             val intent = Intent(this, Chart::class.java)
+            intent.putExtra("Username", name)
             startActivity(intent)
         }
-
-        findViewById<Button>(R.id.btnContinue).setOnClickListener {
-            val name = userNameInput.text.toString()
-
-            DataModel.instance.addUser(
-                User(name = name)
-            )
-            val user2 = DataModel.instance.getUserByName(name)
-            print(user2)
-//            print(DataModel.instance.users)
-//            userAdapter.notifyItemInserted(
-//                DataModel.instance.users.size - 1
-//            )
-        }
-
 
     }
 }

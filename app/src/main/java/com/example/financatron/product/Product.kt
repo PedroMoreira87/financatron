@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
 data class Product(
     @ColumnInfo(name = "name") var name:String,
     @ColumnInfo(name = "price") var price:Float,
-    @ColumnInfo(name = "day") var day:String
+    @ColumnInfo(name = "day") var day:String,
+    @ColumnInfo(name = "userName") var userName:String
 ) {
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 }

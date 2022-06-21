@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.BarChart
@@ -19,9 +20,17 @@ class Chart : AppCompatActivity() {
     private lateinit var barDataSet: BarDataSet
     private lateinit var barData: BarData
 
+    private lateinit var productNameInput: TextInputEditText
+    private lateinit var productPriceInput: TextInputEditText
+    private lateinit var productDayInput: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chart)
+
+        productNameInput = findViewById(R.id.productInput)
+        productPriceInput = findViewById(R.id.productPriceInput)
+        productDayInput = findViewById(R.id.selectedDay)
 
         chart()
         getDay(R.id.btnSunday, 0, 1f)
@@ -31,7 +40,6 @@ class Chart : AppCompatActivity() {
         getDay(R.id.btnThursday, 4, 5f)
         getDay(R.id.btnFriday, 5, 6f)
         getDay(R.id.btnSaturday, 6, 7f)
-
 
         val totalButton = findViewById<Button>(R.id.btnTotal)
         totalButton.setOnClickListener {
@@ -45,8 +53,18 @@ class Chart : AppCompatActivity() {
             startActivity(intent)
         }
 
-        fun onItemClicked(view: View, position: Int) {
-            val user = DataModel.instance.users[position]
+        val profileName = intent.getStringExtra("Username")
+        findViewById<TextView>(R.id.helloName).apply {
+            text = profileName
+        }
+
+        val saveButton = findViewById<Button>(R.id.btnSave)
+        logoutButton.setOnClickListener {
+            val productName = productNameInput.text.toString()
+            val productPrice = productPriceInput.text.toString()
+            val productDay = productDayInput.text.toString()
+
+
         }
     }
 

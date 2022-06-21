@@ -1,7 +1,6 @@
 package com.example.financatron
 
 import android.content.Context
-import android.service.autofill.UserData
 import com.example.financatron.product.Product
 import com.example.financatron.product.ProductDao
 import com.example.financatron.product.ProductDatabase
@@ -31,7 +30,6 @@ class DataModel private constructor() {
 
     fun addUser(user: User) {
         val id = userDB.insertAll(user)
-
         users = userDB.getAll()
     }
 
@@ -51,8 +49,11 @@ class DataModel private constructor() {
 
     fun addProduct(product: Product) {
         val id = productDB.insertAll(product)
-
         products = productDB.getAll()
+    }
+
+    fun getAllProducts(userName: String): List<Product> {
+        return productDB.getAll().filter { userName == it.userName }
     }
 
     fun updateProduct(product: Product) {
