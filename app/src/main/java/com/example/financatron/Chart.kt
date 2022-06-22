@@ -38,9 +38,6 @@ class Chart : AppCompatActivity() {
         productDayInput = findViewById(R.id.selectedDay)
         userProducts = ArrayList()
 
-        loadDays()
-        chart()
-
         getDay(R.id.btnSunday, 0, 1f)
         getDay(R.id.btnMonday, 1, 2f)
         getDay(R.id.btnTuesday, 2, 3f)
@@ -80,6 +77,10 @@ class Chart : AppCompatActivity() {
             updateUserProducts()
             println(userProducts)
         }
+
+        loadDays()
+        chart()
+        updateUserProducts()
     }
 
     private fun updateUserProducts() {
@@ -127,6 +128,8 @@ class Chart : AppCompatActivity() {
         barDataSet.setColors(ColorTemplate.JOYFUL_COLORS, 250)
         barDataSet.valueTextColor = Color.WHITE
         barDataSet.valueTextSize = 15f
+        barChart.notifyDataSetChanged();
+        barChart.invalidate();
     }
 
     private fun getDay(day: Int, index: Int, x: Float) {
