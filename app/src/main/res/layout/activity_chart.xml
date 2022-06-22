@@ -216,7 +216,6 @@
             android:layout_height="48dp"
             android:id="@+id/productPriceInput"
             android:inputType="number"
-            android:imeOptions="actionDone"
             android:textColor="#FFFFFFFF"
             android:textColorHint="#FFFFFFFF"
             app:boxStrokeColor="#FFFFFFFF"

@@ -3,10 +3,7 @@ package com.example.financatron
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.EditorInfo
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.financatron.product.Product
@@ -21,7 +18,7 @@ class Chart : AppCompatActivity() {
     private lateinit var barDataSet: BarDataSet
     private lateinit var barData: BarData
 
-    private lateinit var userName : String
+    private lateinit var userName: String
     private lateinit var userProducts: List<Product>
     private lateinit var userWeek: ArrayList<Day>
 
@@ -38,19 +35,13 @@ class Chart : AppCompatActivity() {
         productDayInput = findViewById(R.id.selectedDay)
         userProducts = ArrayList()
 
-        getDay(R.id.btnSunday, 0, 1f)
-        getDay(R.id.btnMonday, 1, 2f)
-        getDay(R.id.btnTuesday, 2, 3f)
-        getDay(R.id.btnWednesday, 3, 4f)
-        getDay(R.id.btnThursday, 4, 5f)
-        getDay(R.id.btnFriday, 5, 6f)
-        getDay(R.id.btnSaturday, 6, 7f)
-
-        val totalButton = findViewById<Button>(R.id.btnTotal)
-        totalButton.setOnClickListener {
-            val intent = Intent(this, Total::class.java)
-            startActivity(intent)
-        }
+        getDay(R.id.btnSunday)
+        getDay(R.id.btnMonday)
+        getDay(R.id.btnTuesday)
+        getDay(R.id.btnWednesday)
+        getDay(R.id.btnThursday)
+        getDay(R.id.btnFriday)
+        getDay(R.id.btnSaturday)
 
         val logoutButton = findViewById<Button>(R.id.btnLogout)
         logoutButton.setOnClickListener {
@@ -68,12 +59,14 @@ class Chart : AppCompatActivity() {
             val productName = productNameInput.text.toString()
             val productPrice = productPriceInput.text.toString()
             val productDay = productDayInput.text.toString()
-            DataModel.instance.addProduct(Product(
-                name = productName,
-                price = productPrice.toFloat(),
-                day = productDay,
-                userName = userName
-            ))
+            DataModel.instance.addProduct(
+                Product(
+                    name = productName,
+                    price = productPrice.toFloat(),
+                    day = productDay,
+                    userName = userName
+                )
+            )
             updateUserProducts()
             println(userProducts)
         }
@@ -81,6 +74,13 @@ class Chart : AppCompatActivity() {
         loadDays()
         chart()
         updateUserProducts()
+
+        val totalButton = findViewById<Button>(R.id.btnTotal)
+        totalButton.setOnClickListener {
+            val intent = Intent(this, Total::class.java)
+            intent.putExtra("Username", userName)
+            startActivity(intent)
+        }
     }
 
     private fun updateUserProducts() {
@@ -128,13 +128,12 @@ class Chart : AppCompatActivity() {
         barDataSet.setColors(ColorTemplate.JOYFUL_COLORS, 250)
         barDataSet.valueTextColor = Color.WHITE
         barDataSet.valueTextSize = 15f
-        barChart.notifyDataSetChanged();
-        barChart.invalidate();
+        barChart.notifyDataSetChanged()
+        barChart.invalidate()
     }
 
-    private fun getDay(day: Int, index: Int, x: Float) {
+    private fun getDay(day: Int) {
         val btn = findViewById<Button>(day)
-        val inputPrice = findViewById<TextInputEditText>(R.id.productPriceInput)
 
         val dayName = when (day) {
             R.id.btnSunday -> "Domingo"
@@ -148,15 +147,6 @@ class Chart : AppCompatActivity() {
         }
 
         btn.setOnClickListener() {
-            inputPrice.setOnEditorActionListener() { v, actionId, event ->
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    val text = v.text.toString().toFloatOrNull()
-                    barList[index] = BarEntry(x, text ?: 0f)
-                    true
-                } else {
-                    false
-                }
-            }
             findViewById<TextView>(R.id.selectedDay).apply {
                 text = dayName
             }

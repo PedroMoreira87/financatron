@@ -7,6 +7,7 @@ import com.example.financatron.product.ProductDatabase
 import com.example.financatron.user.User
 import com.example.financatron.user.UserDAO
 import com.example.financatron.user.UserDatabase
+import kotlin.concurrent.fixedRateTimer
 
 class DataModel private constructor() {
     lateinit var users: List<User>

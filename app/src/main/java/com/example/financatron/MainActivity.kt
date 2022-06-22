@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.btnContinue)
         button.setOnClickListener {
             val name = userNameInput.text.toString()
-            val userName = DataModel.instance.getUserByName(name)
+            val userName = DataModel.instance.getUserByName(name)?.name
 
             if(userName == null) {
                 DataModel.instance.addUser(
