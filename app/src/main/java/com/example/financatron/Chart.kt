@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.financatron.product.Product
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
@@ -19,6 +20,10 @@ class Chart : AppCompatActivity() {
     private lateinit var barList: ArrayList<BarEntry>
     private lateinit var barDataSet: BarDataSet
     private lateinit var barData: BarData
+
+    private lateinit var userName : String
+    private lateinit var userProducts: List<Product>
+    private lateinit var userWeek: ArrayList<Day>
 
     private lateinit var productNameInput: TextInputEditText
     private lateinit var productPriceInput: TextInputEditText
@@ -31,8 +36,11 @@ class Chart : AppCompatActivity() {
         productNameInput = findViewById(R.id.productInput)
         productPriceInput = findViewById(R.id.productPriceInput)
         productDayInput = findViewById(R.id.selectedDay)
+        userProducts = ArrayList()
 
+        loadDays()
         chart()
+
         getDay(R.id.btnSunday, 0, 1f)
         getDay(R.id.btnMonday, 1, 2f)
         getDay(R.id.btnTuesday, 2, 3f)
@@ -53,32 +61,64 @@ class Chart : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val profileName = intent.getStringExtra("Username")
+        userName = intent.getStringExtra("Username").toString()
         findViewById<TextView>(R.id.helloName).apply {
-            text = profileName
+            text = userName
         }
 
         val saveButton = findViewById<Button>(R.id.btnSave)
-        logoutButton.setOnClickListener {
+        saveButton.setOnClickListener {
             val productName = productNameInput.text.toString()
             val productPrice = productPriceInput.text.toString()
             val productDay = productDayInput.text.toString()
-
-
+            DataModel.instance.addProduct(Product(
+                name = productName,
+                price = productPrice.toFloat(),
+                day = productDay,
+                userName = userName
+            ))
+            updateUserProducts()
+            println(userProducts)
         }
+    }
+
+    private fun updateUserProducts() {
+        userProducts = DataModel.instance.getAllProducts(userName)
+        loadDays()
+        chart()
+    }
+
+    private fun loadDays() {
+        userWeek = ArrayList()
+        userWeek.add(Day(name = "Domingo", expenses = 0f))
+        userWeek.add(Day(name = "Segunda", expenses = 0f))
+        userWeek.add(Day(name = "Terça", expenses = 0f))
+        userWeek.add(Day(name = "Quarta", expenses = 0f))
+        userWeek.add(Day(name = "Quinta", expenses = 0f))
+        userWeek.add(Day(name = "Sexta", expenses = 0f))
+        userWeek.add(Day(name = "Sábado", expenses = 0f))
+
+        for (product in userProducts) {
+            val day = userWeek.find { product.day == it.name }
+            if (day != null) {
+                day.expenses += product.price
+            }
+        }
+
+        println(userWeek)
     }
 
     private fun chart() {
         val barChart = findViewById<BarChart>(R.id.barChart)
 
         barList = ArrayList()
-        barList.add(BarEntry(1f, 500f))
-        barList.add(BarEntry(2f, 600f))
-        barList.add(BarEntry(3f, 100f))
-        barList.add(BarEntry(4f, 300f))
-        barList.add(BarEntry(5f, 800f))
-        barList.add(BarEntry(6f, 400f))
-        barList.add(BarEntry(7f, 200f))
+        barList.add(BarEntry(1f, userWeek[0].expenses))
+        barList.add(BarEntry(2f, userWeek[1].expenses))
+        barList.add(BarEntry(3f, userWeek[2].expenses))
+        barList.add(BarEntry(4f, userWeek[3].expenses))
+        barList.add(BarEntry(5f, userWeek[4].expenses))
+        barList.add(BarEntry(6f, userWeek[5].expenses))
+        barList.add(BarEntry(7f, userWeek[6].expenses))
 
         barDataSet = BarDataSet(barList, "Gastos")
         barData = BarData(barDataSet)
