@@ -23,17 +23,12 @@ class Total : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         productAdapter = ProductAdapter(userName, clickListener = object : OnClickedListener {
             override fun onItemClicked(view: View, position: Int) {
-//                val user = DataModel.instance.users[position]
-//                user.name = "Nome Deletado!"
-//                DataModel.instance.updateUser(user)
-//                productAdapter.notifyItemChanged(position)
+                DataModel.instance.removeProduct(DataModel.instance.getAllProducts(userName)[position])
+                productAdapter.notifyItemRemoved(position)
             }
 
             override fun onItemLongClicked(view: View, position: Int) {
-//                DataModel.instance.removeUser(
-//                    DataModel.instance.users[position]
-//                )
-//                productAdapter.notifyItemRemoved(position)
+                TODO("Not yet implemented")
             }
 
         })
