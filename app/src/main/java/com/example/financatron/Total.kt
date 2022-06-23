@@ -28,7 +28,8 @@ class Total : AppCompatActivity() {
             }
 
             override fun onItemLongClicked(view: View, position: Int) {
-                TODO("Not yet implemented")
+                DataModel.instance.removeProduct(DataModel.instance.getAllProducts(userName)[position])
+                productAdapter.notifyItemRemoved(position)
             }
 
         })
