@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">financatron</string>
+    <string name="financatron">Financatron</string>
+    <string name="por_um_mundo_sem_banccos">Por um mundo sem banccos.</string>
+    <string name="digite_seu_nome">Digite seu nome:</string>
+    <string name="continuar">Continuar</string>
+    <string name="e_g_ruarez">e.g. Ruarez</string>
+    <string name="domingo">Domingo</string>
+    <string name="dom">Dom</string>
+    <string name="seg">Seg</string>
+    <string name="ter">Ter</string>
+    <string name="qua">Qua</string>
+    <string name="qui">Qui</string>
+    <string name="sex">Sex</string>
+    <string name="sab">Sab</string>
+    <string name="dia_selecionado">Dia selecionado:</string>
+    <string name="produto">Produto:</string>
+    <string name="pre_o">Preço:</string>
+    <string name="por_um_mundo_sem_bancos">Por um mundo sem bancos</string>
+    <string name="total">Total</string>
+    <string name="logout">Logout</string>
+    <string name="voltar">Voltar</string>
+    <string name="ola">Olá,</string>
+    <string name="save">Save</string>
 </resources>

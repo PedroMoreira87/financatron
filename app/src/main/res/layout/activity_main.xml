@@ -5,15 +5,86 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:background="@drawable/background">
+
     <TextView
+            android:text="@string/financatron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Financatron"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/financatron"
+            android:textSize="56sp"
+            android:textColor="#FFFFFFFF"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.206"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            android:fontFamily="@font/roboto_thin"
+            android:layout_marginTop="56dp"/>
+
+    <TextView
+            android:text="@string/por_um_mundo_sem_bancos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/worldWithoutBanks"
+            android:textSize="18sp"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/financatron"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="4dp"
+            app:layout_constraintHorizontal_bias="0.502"/>
+
+    <pl.droidsonroids.gif.GifImageView
+            android:layout_width="307dp"
+            android:layout_height="335dp"
+            android:src="@drawable/squidward"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="224dp"
+            android:id="@+id/gifImageView"/>
+
+    <TextView
+            android:text="@string/digite_seu_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/typeYourName"
+            android:textSize="22sp"
+            android:textColor="#FFFFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="192dp"/>
+
+    <Button
+            android:text="@string/continuar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnContinue"
+            android:backgroundTint="#636363"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="68dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="304dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/userName"
+            android:hint="@string/e_g_ruarez"
+            android:textColor="#FFFFFFFF"
+            android:textColorHint="#FFFFFFFF"
+            app:boxStrokeColor="#FFFFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            android:minHeight="48dp"
+            android:layout_marginBottom="128dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
